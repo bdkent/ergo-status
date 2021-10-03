@@ -6,4 +6,4 @@
 - alerting at [@ergo_status](https://t.me/ergo_status) telegram channel
 
 # Contribute!
-- open PRs on `config.yaml` to add monitor new Ergo system
+- open PRs on `config.yaml` to monitor new Ergo system
