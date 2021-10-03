@@ -14,16 +14,6 @@ alerting:
     id: "-1001288637698" # ID of @ergo_status channel
 
 services:
-  - name: junk
-    group: Ergo Platform
-    url: "https://ergoplatformaaaaaaadd.org"
-    interval: 30s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: telegram
-        enabled: true
-        send-on-resolved: true
 
   - name: Homepage
     group: Ergo Platform
@@ -31,24 +21,40 @@ services:
     interval: 5m
     conditions:
       - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
   - name: Explorer
     group: Ergo Platform
     url: "https://explorer.ergoplatform.com"
     interval: 5m
     conditions:
       - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
   - name: API v0
     group: Ergo Platform
     url: "https://api.ergoplatform.com/api/v0/info"
     interval: 5m
     conditions:
       - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
   - name: API v1
     group: Ergo Platform
     url: "https://api.ergoplatform.com/api/v1/info"
     interval: 5m
     conditions:
       - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
 
   - name: SigmaUSD App
     group: SigmaUSD
@@ -56,6 +62,10 @@ services:
     interval: 5m
     conditions:
       - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
   - name: SigmaUSD Assembler
     group: SigmaUSD
     url: "https://assm.sigmausd.io/state"
@@ -63,6 +73,10 @@ services:
     conditions:
       - "[STATUS] == 200"
       - "[BODY].functioning == true"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
 
   - name: ErgoDEX Homepage
     group: ErgoDEX
@@ -70,12 +84,20 @@ services:
     interval: 5m
     conditions:
       - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
   - name: ErgoDEX App (Beta)
     group: ErgoDEX
     url: "https://beta.ergodex.io/"
     interval: 5m
     conditions:
       - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
 
   - name: Ergo Auction House App
     group: Ergo Auction House
@@ -83,6 +105,10 @@ services:
     interval: 5m
     conditions:
       - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
   - name: Ergo Auction House Assembler
     group: Ergo Auction House
     url: "https://assembler.ergoauctions.org/state"
@@ -90,3 +116,7 @@ services:
     conditions:
       - "[STATUS] == 200"
       - "[BODY].functioning == true"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
