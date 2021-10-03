@@ -1,0 +1,92 @@
+#metrics: true
+
+storage:
+  type: sqlite
+  file: /db/data.db
+
+ui:
+  title: Ergo Ecosystem Status
+  logo: 'https://ergoplatform.org/img/uploads/1762.png'
+
+alerting:
+  telegram: 
+    token: "${ALERT_BOT_TOKEN}"
+    id: "-1001288637698" # ID of @ergo_status channel
+
+services:
+  - name: junk
+    group: Ergo Platform
+    url: "https://ergoplatformaaaaaaadd.org"
+    interval: 30s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+        enabled: true
+        send-on-resolved: true
+
+  - name: Homepage
+    group: Ergo Platform
+    url: "https://ergoplatform.org"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+  - name: Explorer
+    group: Ergo Platform
+    url: "https://explorer.ergoplatform.com"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+  - name: API v0
+    group: Ergo Platform
+    url: "https://api.ergoplatform.com/api/v0/info"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+  - name: API v1
+    group: Ergo Platform
+    url: "https://api.ergoplatform.com/api/v1/info"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+
+  - name: SigmaUSD App
+    group: SigmaUSD
+    url: "https://sigmausd.io"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+  - name: SigmaUSD Assembler
+    group: SigmaUSD
+    url: "https://assm.sigmausd.io/state"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].functioning == true"
+
+  - name: ErgoDEX Homepage
+    group: ErgoDEX
+    url: "https://ergodex.io/"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+  - name: ErgoDEX App (Beta)
+    group: ErgoDEX
+    url: "https://beta.ergodex.io/"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+
+  - name: Ergo Auction House App
+    group: Ergo Auction House
+    url: "https://ergoauctions.org"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+  - name: Ergo Auction House Assembler
+    group: Ergo Auction House
+    url: "https://assembler.ergoauctions.org/state"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].functioning == true"
