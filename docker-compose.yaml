@@ -9,7 +9,7 @@ services:
       - './config.yaml:/config/config.yaml'
       - 'storage_data:/db'
     ports:
-      - '8080:8080'
+      - '8080:80'
 
 secrets:
   ALERT_BOT_TOKEN: 
