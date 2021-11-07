@@ -12,6 +12,9 @@ alerting:
   telegram: 
     token: "${ALERT_BOT_TOKEN}"
     id: "-1001288637698" # ID of @ergo_status channel
+    default-alert:
+      enabled: true
+      send-on-resolved: true
 
 services:
 
@@ -23,8 +26,8 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
+
+
   - name: Explorer
     group: Ergo Platform
     url: "https://explorer.ergoplatform.com"
@@ -33,8 +36,6 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
   - name: API v0
     group: Ergo Platform
     url: "https://api.ergoplatform.com/api/v0/info"
@@ -43,8 +44,14 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
+  - name: API v0 [testnet]
+    group: Ergo Platform
+    url: "https://api-testnet.ergoplatform.com/api/v0/info"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: telegram
   - name: API v1
     group: Ergo Platform
     url: "https://api.ergoplatform.com/api/v1/info"
@@ -53,8 +60,15 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
+  - name: API v1 [testnet]
+    group: Ergo Platform
+    url: "https://api.ergoplatform.com/api/v1/info"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+
 
   - name: SigmaUSD App
     group: SigmaUSD
@@ -64,8 +78,6 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
   - name: SigmaUSD Assembler
     group: SigmaUSD
     url: "https://assm.sigmausd.io/state"
@@ -75,8 +87,7 @@ services:
       - "[BODY].functioning == true"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
+
 
   - name: ErgoDEX Homepage
     group: ErgoDEX
@@ -86,8 +97,6 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
   - name: ErgoDEX App (Beta)
     group: ErgoDEX
     url: "https://beta.ergodex.io/"
@@ -96,8 +105,7 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
+
 
   - name: Ergo Auction House App
     group: Ergo Auction House
@@ -107,8 +115,6 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
   - name: Ergo Auction House Assembler
     group: Ergo Auction House
     url: "https://assembler.ergoauctions.org/state"
@@ -118,5 +124,50 @@ services:
       - "[BODY].functioning == true"
     alerts:
       - type: telegram
-        enabled: true
-        send-on-resolved: true
+
+  - name: Ergo Utils App
+    group: Ergo Utils
+    url: "https://ergoutils.org"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+  - name: Ergo Utils Assembler
+    group: Ergo Utils
+    url: "https://assembler.ergoutils.org/state"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].functioning == true"
+    alerts:
+      - type: telegram
+
+
+  - name: Ergo Raffle (beta)
+    group: Ergo Raffle
+    url: "https://beta.ergoraffle.com/"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+
+
+
+  - name: Ergo Faucet [mainnet]
+    group: Ergo Faucet
+    url: "https://ergofaucet.org/"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+  - name: Ergo Faucet [testnet]
+    group: Ergo Faucet
+    url: "https://testnet.ergofaucet.org/"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: telegram
