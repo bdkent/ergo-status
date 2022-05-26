@@ -2,21 +2,30 @@
 
 storage:
   type: sqlite
-  file: /db/data.db
+  path: /db/data.db
 
 ui:
-  title: Ergo Ecosystem Status
+  title: 'Ergo Ecosystem Status'
+  header: 'Ergo Ecosystem Status'
   logo: 'https://ergoplatform.org/img/uploads/1762.png'
+  link: 'https://github.com/bdkent/ergo-status'
+  buttons:
+    - name: 'Join Alert Channel'
+      link: 'https://t.me/ergo_status'
+    - name: 'Contribute'
+      link: 'https://github.com/bdkent/ergo-status'
+    - name: 'Tips'
+      link: 'https://explorer.ergoplatform.com/en/addresses/9fm5gUeTyNVMtB9AX4FCc4wPNtMxNryHS3YDP7Hn5mj7Corh4y8'
 
 alerting:
   telegram: 
-    token: "${ALERT_BOT_TOKEN}"
+    token: ${ALERT_BOT_TOKEN}
     id: "-1001288637698" # ID of @ergo_status channel
     default-alert:
       enabled: true
       send-on-resolved: true
 
-services:
+endpoints:
 
   - name: Homepage
     group: Ergo Platform
@@ -97,9 +106,9 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
-  - name: ErgoDEX App (Beta)
+  - name: ErgoDEX App
     group: ErgoDEX
-    url: "https://beta.ergodex.io/"
+    url: "https://app.ergodex.io/"
     interval: 5m
     conditions:
       - "[STATUS] == 200"
@@ -171,3 +180,15 @@ services:
       - "[STATUS] == 200"
     alerts:
       - type: telegram
+
+
+
+  - name: ErgoPad 
+    group: ErgoPad Faucet
+    url: "https://ergopad.io"
+    interval: 5m 
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: telegram
+
